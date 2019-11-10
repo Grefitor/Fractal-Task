@@ -1,0 +1,26 @@
+<input type="text" (keydown.enter)="onAdd($event)" [(ngModel)]="item" />
+
+<div>
+
+  <input
+    name='status'
+    type="radio"
+    [(ngModel)]="status"
+    value="done"
+  > done
+
+  <input
+    name='status'
+    type="radio"
+    [(ngModel)]="status"
+    value="doing"
+  > doing
+</div>
+
+<ul>
+  <li
+    *ngFor="let todo of todos"
+  >
+    {{todo.item}} <input type="checkbox" />
+  </li>
+</ul>

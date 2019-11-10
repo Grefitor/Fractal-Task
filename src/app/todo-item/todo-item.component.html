@@ -1,0 +1,19 @@
+<mat-card class="example-card todo-wrapper" [class.opacity]="toDoItem.todo_status==2">
+  <mat-card-header>
+    
+    <mat-card-title>
+      <mat-checkbox #check (change)="updateStatus(check.checked)" [checked]="toDoItem.todo_status==2"
+        class="example-margin">
+          {{toDoItem.title}}
+       </mat-checkbox>
+     
+    </mat-card-title>
+    <mat-card-subtitle>{{toDoItem.creation_date | date }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="editTask()">Edit</button>
+    <button mat-button (click)="delete()">Delete</button>
+  </mat-card-actions>
+</mat-card>

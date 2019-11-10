@@ -1,0 +1,20 @@
+/* Add application styles & imports to this file! */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+*{
+    margin: 0;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    background: url('assets/121407.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.mat-dialog-container {
+    padding: 0 !important;
+}

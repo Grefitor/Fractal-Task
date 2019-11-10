@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <div class="heading">
+        To Do Creator
+    </div>
+    <div class="content">
+        <ng-container *ngFor="let task of toDoList">
+            <div class="type-todo " *ngIf="task.content_type==1;else type2">
+                <app-todo-item [toDoItem]="task"></app-todo-item>
+            </div>
+            
+            <ng-template #type2>
+                <div class="type-todo">
+                    <app-todo-bucket [bucketItem]="task"></app-todo-bucket>
+                </div>
+            </ng-template>
+            
+        </ng-container>
+    </div>
+    <div id="icon">
+       <button mat-fab color="primary" (click)="openAddNewDialog()">
+           <i class="material-icons">create</i>
+       </button>
+    </div>
+</div>

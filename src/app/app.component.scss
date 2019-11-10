@@ -1,0 +1,65 @@
+.wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    /* div {
+        border: 0.5px solid lightblue;
+    } */
+
+    .heading {
+        min-height: 128px;
+        flex-basis: 128px;
+        overflow: hidden;
+        float: left;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Lobster';
+        font-size: 2rem;
+        font-weight: 500;
+        color: white;
+    }
+
+    .content {
+        flex-basis: calc(100% - 128px - 20px);
+        // min-height: calc(100% - 128px - 20px);
+        float: left;
+        margin: 10px;
+        background: rgba(44, 26, 32, 0.32);
+        padding: 0 90px;
+        padding-top: 24px;
+        padding-bottom: 10px;
+
+        display: grid;
+        justify-content: space-evenly;
+        grid-template-columns: repeat(auto-fill, 300px);
+        grid-template-rows: repeat(auto-fill, 1fr);
+        grid-gap: 20px 20px;
+        grid-auto-flow: dense;
+        .type-todo {
+            min-width: 300px;
+            width: 300px;
+            display: inline-block;
+            height: fit-content;
+            width: fit-content;
+            min-height: 260px;
+        
+            app-todo-item{
+                height: 100%;
+                width: 100%;
+            }
+            app-todo-bucket {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    }
+
+    #icon {
+        position: fixed;
+        bottom: 26px;
+        right: 26px;
+    }
+}

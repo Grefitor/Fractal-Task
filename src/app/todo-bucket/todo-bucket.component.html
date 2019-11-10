@@ -1,0 +1,35 @@
+<mat-card class="example-card todo-wrapper" [class.opacity]="bucketItem.todo_status==2">
+  <mat-card-header>
+    
+    <mat-card-title>
+        <mat-checkbox #check (change)="updateStatus(check.checked)" [checked]="bucketItem.todo_status==2"
+          class="example-margin">
+      {{bucketItem.title}}
+        </mat-checkbox>
+        
+      </mat-card-title>
+    <mat-card-subtitle>{{bucketItem.creation_date | date }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+   <div class="wrapper">
+     <ng-container >
+      <mat-list *ngFor="let task of bucketItem.task">
+        <mat-list-item>
+           <mat-checkbox [checked]="task.todo_status==2" (change)="updateStatusChild($event,task)" class="example-margin">
+             {{task.title}}
+           </mat-checkbox>
+           <span style="margin-left: 10px; cursor: pointer;">
+             <i class="material-icons" (click)="updateChild(task)">edit</i>
+           </span>
+          </mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+      <mat-divider></mat-divider>
+     </ng-container>
+   </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button (click)="editTask()">Edit</button>
+    <button mat-button (click)="delete()">Delete</button>
+  </mat-card-actions>
+</mat-card>

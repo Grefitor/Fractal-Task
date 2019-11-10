@@ -1,0 +1,44 @@
+
+.wrapper{
+    height: 100%;
+    width: 100%;
+    .header{
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Montserrat';
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: white;
+        background: #006aa9;
+    }
+    .content-type{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        margin-top: 50px;
+    }
+    .todo-creater,
+    .bucket-creater {
+        height: calc(100% - 120px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 24px;
+        padding-top: 60px;
+        .example-full-width {
+            width: 100%;
+        }
+        .example-margin{
+            margin: 20px 0;
+        }
+    }
+    .btn{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 60px;
+        padding-right: 16px;
+    }
+}

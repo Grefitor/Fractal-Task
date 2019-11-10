@@ -1,0 +1,51 @@
+<form class="wrapper" [formGroup]="todoForm">
+  <div class="header" *ngIf="!editFlag; else edit">
+    Create
+  </div>
+  <ng-template #edit>
+    <div class="header">
+      Edit
+    </div>
+  </ng-template>
+  <div class="content-type" *ngIf="todoItem.content_type==0">
+    <button mat-raised-button color="primary" (click)="setTodoContentType(1)">Todo</button>
+    <button mat-raised-button color="accent" (click)="setTodoContentType(2)">Todo Bucket</button>
+  </div>
+
+  <ng-container [ngSwitch]="todoItem.content_type">
+    <div class="todo-creater" *ngSwitchCase="1">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Todo Title</mat-label>
+        <input type="text" placeholder="Todo Title" matInput formControlName="title">
+      </mat-form-field>
+      <mat-slide-toggle #show (change)="showParent(show.checked)" class="example-margin" [checked]="todoItem.parentId!=0"
+        color="primary">
+        Add to Bucket
+      </mat-slide-toggle>
+      <mat-form-field *ngIf="showParentFlag" class="example-margin" appearance="outline">
+        <mat-label>Select Bucket</mat-label>
+        <mat-select formControlName="parentId">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let bucket of todoBucketOptions" [value]="bucket.todoId">
+            {{bucket.title}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </div>
+    <div class="bucket-creater" *ngSwitchCase="2">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Bucket Title</mat-label>
+        <input type="text" placeholder="Bucket Title" matInput formControlName="title" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option.title">
+            {{option.title}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+  </ng-container>
+  <div class="btn" *ngIf="todoItem.content_type!=0">
+    <button mat-raised-button [disabled]="!todoForm.valid" color="primary" (click)="saveForm()">Save</button>
+  </div>
+</form>
